@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AB IL | Social Media</title>
+<meta name="description" content="AB IL এর সব Social Media এক জায়গায়।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #0e2a1f;
+    --moss:   #1b4a34;
+    --leaf:   #8fd694;
+    --chalk:  #f2f6ee;
+    --sun:    #ffcf4a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(120% 60% at 50% 0%, var(--moss) 0%, transparent 70%),
+      var(--forest);
+    color: var(--chalk);
+    font-family: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+    display: flex; justify-content: center;
+    padding: 36px 20px 48px;
+    overflow-x: hidden;
+  }
+  .wrap { width: 100%; max-width: 420px; }
+
+  /* ---------- হিরো: ছবি + বিশাল লেখা ---------- */
+  .hero { position: relative; height: 420px; margin-bottom: 28px; }
+  .word {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    font-family: "Syne", sans-serif; font-weight: 800;
+    font-size: clamp(72px, 24vw, 104px); line-height: .86;
+    letter-spacing: -.03em; text-align: center; white-space: nowrap;
+    color: transparent; -webkit-text-stroke: 1.5px rgba(143,214,148,.55);
+    user-select: none;
+  }
+  .word.w1 { top: 0; }
+  .word.w2 { top: 31%; }
+  .word.w3 { top: 62%; }
+  .word.w3 { color: var(--sun); -webkit-text-stroke: 0; } /* "UP" শুধু হলুদ */
+
+  .arch {
+    position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+    width: 62%; height: 78%;
+    border-radius: 999px 999px 18px 18px;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--moss), #0a1d15);
+    border: 3px solid var(--chalk);
+    box-shadow: 0 24px 50px -18px rgba(0,0,0,.7);
+    animation: rise .9s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .arch .initials {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    font-family: "Syne", sans-serif; font-weight: 800; font-size: 3rem;
+    color: var(--leaf);
+  }
+  .arch img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: 50% 22%;
+  }
+  @keyframes rise { from { opacity: 0; transform: translate(-50%, 28px); } }
+
+  /* ---------- নাম ও বায়ো ---------- */
+  .id { text-align: center; margin-bottom: 26px; }
+  .id h1 {
+    font-family: "Syne", sans-serif; font-weight: 800;
+    font-size: 1.9rem; letter-spacing: .02em;
+  }
+  .id p { margin-top: 4px; color: var(--leaf); font-weight: 500; letter-spacing: .04em; }
+
+  /* ---------- লিংক ---------- */
+  .links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .links a {
+    --c: var(--leaf);
+    position: relative; display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding: 16px 20px 16px 24px;
+    color: var(--chalk); text-decoration: none;
+    background: rgba(242,246,238,.06);
+    border-radius: 14px; overflow: hidden;
+    transition: background .2s, transform .2s;
+  }
+  .links a::before {            /* বাঁ পাশের রঙিন দাগ */
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+    background: var(--c); transition: width .2s;
+  }
+  .links a::after {             /* ডান পাশের তীর */
+    content: ""; width: 9px; height: 9px; flex-shrink: 0;
+    border-top: 2px solid var(--chalk); border-right: 2px solid var(--chalk);
+    transform: rotate(45deg); opacity: .5; transition: transform .2s, opacity .2s;
+  }
+  .links a:hover, .links a:focus-visible { background: rgba(242,246,238,.13); transform: translateX(4px); }
+  .links a:hover::before, .links a:focus-visible::before { width: 10px; }
+  .links a:hover::after, .links a:focus-visible::after { transform: translateX(4px) rotate(45deg); opacity: 1; }
+  .links a:focus-visible { outline: 2px solid var(--sun); outline-offset: 2px; }
+  .name { font-family: "Syne", sans-serif; font-weight: 700; font-size: 1.1rem; }
+  .sub  { display: block; font-size: .85rem; opacity: .65; margin-top: 2px; }
+  .fb { --c: #4a8dff; } .ig { --c: #ff5fa2; } .x { --c: #e9eee6; } .yt { --c: #ff4b3e; }
+
+  footer { margin-top: 34px; text-align: center; font-size: .8rem; opacity: .5; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .arch { animation: none; }
+    .links a, .links a::before, .links a::after { transition: none; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <!-- ছবি: photo.jpg ফাইলটা index.html এর পাশে রাখুন -->
+  <section class="hero" aria-label="AB IL">
+    <div class="word w1" aria-hidden="true">NEVER</div>
+    <div class="word w2" aria-hidden="true">GIVE</div>
+    <div class="word w3" aria-hidden="true">UP</div>
+    <div class="arch">
+      <span class="initials">AB IL</span>
+      <img src="photo.jpg" alt="AB IL এর ছবি" onerror="this.remove()">
+    </div>
+  </section>
+
+  <header class="id">
+    <h1>AB IL</h1>
+    <p>NEVER GIVE UP</p>
+  </header>
+
+  <ul class="links">
+    <li><a class="fb" href="https://www.facebook.com/share/1CeHZib5Ph/" target="_blank" rel="noopener">
+      <span><span class="name">Facebook</span><span class="sub">প্রোফাইল দেখুন</span></span></a></li>
+    <li><a class="ig" href="https://www.instagram.com/_abil139" target="_blank" rel="noopener">
+      <span><span class="name">Instagram</span><span class="sub">@_abil139</span></span></a></li>
+    <li><a class="x" href="https://x.com/Abil9098" target="_blank" rel="noopener">
+      <span><span class="name">X</span><span class="sub">@Abil9098</span></span></a></li>
+    <li><a class="yt" href="https://youtube.com/@motiva-c8z" target="_blank" rel="noopener">
+      <span><span class="name">YouTube</span><span class="sub">@motiva-c8z</span></span></a></li>
+  </ul>
+
+  <footer>© AB IL</footer>
+</main>
+</body>
+</html>
